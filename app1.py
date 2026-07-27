@@ -333,11 +333,18 @@ st.markdown(
 # 3. LOAD GROQ API KEY
 # -----------------------------
 def get_groq_api_key():
+    api_key = None
+
     try:
-        return st.secrets["GROQ_API_KEY"]
+        api_key = st.secrets.get("GROQ_API_KEY")
     except Exception:
+        api_key = None
+
+    if not api_key:
         load_dotenv()
-        return os.getenv("GROQ_API_KEY")
+        api_key = os.getenv("GROQ_API_KEY")
+
+    return api_key
 
 
 GROQ_API_KEY = get_groq_api_key()
