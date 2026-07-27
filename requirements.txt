@@ -9,3 +9,4 @@ langchain-huggingface
 faiss-cpu
 reportlab
 sentence-transformers
+torchvision
